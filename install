@@ -9,8 +9,8 @@ os_type="$(uname -s)"
 apt_packages="curl git iproute2 python3-pip ripgrep tmux vim-gtk wl-clipboard zsh"
 apt_packages_optional="gnupg htop inotify-tools jq pass pwgen rsync shellcheck unzip"
 
-brew_packages="diffutils git python ripgrep tmux vim zsh"
-brew_packages_optional="gnupg htop jq pass pwgen rsync shellcheck"
+#brew_packages="diffutils git python ripgrep tmux vim zsh"
+#brew_packages_optional="gnupg htop jq pass pwgen rsync shellcheck"
 
 install_asdf_version="v0.14.0"
 install_node_version="20.15.0"
@@ -62,19 +62,19 @@ function apt_install_packages {
     sudo apt-get update && sudo apt-get install -y ${apt_packages} ${apt_packages_optional}
 }
 
-function brew_install_self {
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
+#function brew_install_self {
+#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#}
 
-function brew_install_packages {
-    [ -x "$(command -v brew > /dev/null 2>&1)" ] && brew_install_self
+#function brew_install_packages {
+#    [ -x "$(command -v brew > /dev/null 2>&1)" ] && brew_install_self
+#
+#    # Ensure brew's paths are available for this script
+#    eval "$(/opt/homebrew/bin/brew shellenv)"
 
-    # Ensure brew's paths are available for this script
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    # shellcheck disable=SC2086
-    brew install ${brew_packages} ${brew_packages_optional}
-}
+#    # shellcheck disable=SC2086
+#    brew install ${brew_packages} ${brew_packages_optional}
+#}
 
 function display_packages {
     if [ "${os_type}" == "Linux" ]; then
@@ -143,7 +143,7 @@ echo
 if [ "${DEBUG}" == "1" ]; then
     cp -R "${PWD}/." "${clone_path}"
 else
-    git clone https://github.com/nickjj/dotfiles "${clone_path}"
+    git clone https://github.com/jplummer01/dotfiles "${clone_path}"
 fi
 
 ###############################################################################

@@ -265,7 +265,7 @@ fi
 # Change default shell to zsh
 ###############################################################################
 
-[ "${os_type}" != "macOS" ] && chsh -s "$(command -v zsh)"
+[ "${os_type}" != "macOS" ] && sudo chsh -s "$(command -v zsh)"
 
 # shellcheck disable=SC1091
 . "${HOME}/.config/zsh/.zprofile"
